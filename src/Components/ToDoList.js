@@ -36,7 +36,10 @@ export default function ToDoList() {
             </ToggleButton>
           </ToggleButtonGroup>
           {/* {close buttons} */}
-          <ToDo />
+          <ToDo style={{ margin: "5px" }} />
+          <ToDo style={{ margin: "5px" }} />
+          <ToDo style={{ margin: "5px" }} />
+          <ToDo style={{ margin: "5px" }} />
         </CardContent>
       </Card>
     </Container>
