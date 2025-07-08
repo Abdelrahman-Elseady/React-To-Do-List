@@ -71,7 +71,7 @@ export default function ToDoList() {
           {ToDoList}
           {/* close to dos */}
 
-          {/* Add To do */}
+          {/* Add To do  */}
           <Grid container spacing={2} style={{ marginTop: "20px" }}>
             <Grid
               size={8}
