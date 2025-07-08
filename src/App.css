@@ -5,7 +5,35 @@
   width: 100vw;
   height: 100vh;
   background-color: rgb(153, 152, 152);
+  font-family: "Oswald";
 }
-.todoItem {
-  margin-top: 5px !important;
+@font-face {
+  font-family: "Oswald";
+  src: url("../public/Fonts/Oswald-ExtraLight.ttf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("../public/Fonts/Oswald-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("../public/Fonts/Oswald-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("../public/Fonts/Oswald-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("../public/Fonts/Oswald-SemiBold.ttf");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("../public/Fonts/Oswald-Bold.ttf");
+  font-weight: 700;
 }

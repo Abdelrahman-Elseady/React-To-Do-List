@@ -9,6 +9,8 @@ import Divider from "@mui/material/Divider";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ToDo from "./ToDo";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 export default function ToDoList() {
   return (
     <Container
@@ -17,9 +19,11 @@ export default function ToDoList() {
     >
       <Card sx={{ minWidth: 275, textAlign: "center" }}>
         <CardContent>
-          <Typography variant="h5">ToDoList</Typography>
+          <Typography variant="h5" style={{ fontWeight: 900, fontSize: 50 }}>
+            To Do List
+          </Typography>
           <Divider />
-          {/* {buttons} */}
+          {/* {Filter buttons} */}
           <ToggleButtonGroup
             exclusive
             aria-label="text alignment"
@@ -36,10 +40,41 @@ export default function ToDoList() {
             </ToggleButton>
           </ToggleButtonGroup>
           {/* {close buttons} */}
+
+          {/* {to dos} */}
           <ToDo style={{ margin: "5px" }} />
           <ToDo style={{ margin: "5px" }} />
           <ToDo style={{ margin: "5px" }} />
           <ToDo style={{ margin: "5px" }} />
+          {/* close to dos */}
+
+          {/* Add To do */}
+          <Grid container spacing={2} style={{ marginTop: "20px" }}>
+            <Grid
+              size={8}
+              display={"flex"}
+              justifyContent={"center"}
+              alignItems={"center"}
+            >
+              <TextField
+                id="outlined-basic"
+                label="Task Input"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid
+              size={4}
+              display={"flex"}
+              justifyContent={"space-around"}
+              alignItems={"center"}
+            >
+              <Button variant="contained" fullWidth style={{ padding: 15 }}>
+                Add
+              </Button>
+            </Grid>
+          </Grid>
+          {/* close Add To do */}
         </CardContent>
       </Card>
     </Container>

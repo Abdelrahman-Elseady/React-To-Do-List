@@ -16,7 +16,12 @@ export default function ToDo() {
     >
       <CardContent sx={{ textAlign: "left" }}>
         <Grid container spacing={2}>
-          <Grid size={8} style={{ backgroundColor: "#f0f0f0" }}>
+          <Grid
+            size={8}
+            display={"flex"}
+            justifyContent={"space-around"}
+            alignItems={"center"}
+          >
             <Typography variant="h5">job1</Typography>
             <Typography variant="h6">job 1 details</Typography>
           </Grid>
