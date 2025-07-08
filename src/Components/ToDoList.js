@@ -11,7 +11,33 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ToDo from "./ToDo";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
+import { v4 as uuid } from "uuid";
+
+import { useState } from "react";
+
+const intialToDos = [
+  { id: uuid(), title: "Learn React", details: "fdasf", isCompleted: false },
+  { id: uuid(), title: "Learn Redux", details: "fdasf", isCompleted: false },
+];
+
 export default function ToDoList() {
+  const [ToDos, setToDos] = useState(intialToDos);
+  const [InputValue, setInput] = useState("");
+  const ToDoList = ToDos.map((t) => {
+    return <ToDo key={t.id} title={t.title} details={t.details} />;
+  });
+
+  function HandleButtonClick() {
+    const AddedTodo = {
+      id: uuid(),
+      title: InputValue,
+      details: "",
+      isCompleted: false,
+    };
+    setToDos([...ToDos, AddedTodo]);
+    setInput("");
+  }
+
   return (
     <Container
       maxWidth="sm"
@@ -42,10 +68,7 @@ export default function ToDoList() {
           {/* {close buttons} */}
 
           {/* {to dos} */}
-          <ToDo style={{ margin: "5px" }} />
-          <ToDo style={{ margin: "5px" }} />
-          <ToDo style={{ margin: "5px" }} />
-          <ToDo style={{ margin: "5px" }} />
+          {ToDoList}
           {/* close to dos */}
 
           {/* Add To do */}
@@ -60,7 +83,11 @@ export default function ToDoList() {
                 id="outlined-basic"
                 label="Task Input"
                 variant="outlined"
+                value={InputValue}
                 fullWidth
+                onChange={(event) => {
+                  setInput(event.target.value);
+                }}
               />
             </Grid>
             <Grid
@@ -69,7 +96,12 @@ export default function ToDoList() {
               justifyContent={"space-around"}
               alignItems={"center"}
             >
-              <Button variant="contained" fullWidth style={{ padding: 15 }}>
+              <Button
+                variant="contained"
+                fullWidth
+                style={{ padding: 15 }}
+                onClick={HandleButtonClick}
+              >
                 Add
               </Button>
             </Grid>

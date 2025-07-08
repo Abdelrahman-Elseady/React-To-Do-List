@@ -8,7 +8,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 import "../ToDo.css";
 
-export default function ToDo() {
+export default function ToDo({ title, details }) {
   return (
     <Card
       className="toDoCard"
@@ -16,14 +16,9 @@ export default function ToDo() {
     >
       <CardContent sx={{ textAlign: "left" }}>
         <Grid container spacing={2}>
-          <Grid
-            size={8}
-            display={"flex"}
-            justifyContent={"space-around"}
-            alignItems={"center"}
-          >
-            <Typography variant="h5">job1</Typography>
-            <Typography variant="h6">job 1 details</Typography>
+          <Grid size={8}>
+            <Typography variant="h5">{title}</Typography>
+            <Typography variant="h6">{details}</Typography>
           </Grid>
           <Grid
             size={4}
