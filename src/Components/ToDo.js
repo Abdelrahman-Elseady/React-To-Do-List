@@ -8,7 +8,10 @@ import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 import "../ToDo.css";
 
-export default function ToDo({ title, details }) {
+export default function ToDo({ ToDo, HandleCheck }) {
+  function HandleCheckClick() {
+    HandleCheck(ToDo.id);
+  }
   return (
     <Card
       className="toDoCard"
@@ -17,8 +20,8 @@ export default function ToDo({ title, details }) {
       <CardContent sx={{ textAlign: "left" }}>
         <Grid container spacing={2}>
           <Grid size={8}>
-            <Typography variant="h5">{title}</Typography>
-            <Typography variant="h6">{details}</Typography>
+            <Typography variant="h5">{ToDo.title}</Typography>
+            <Typography variant="h6">{ToDo.details}</Typography>
           </Grid>
           <Grid
             size={4}
@@ -27,10 +30,11 @@ export default function ToDo({ title, details }) {
             alignItems={"center"}
           >
             <IconButton
+              onClick={HandleCheckClick}
               className="iconButton"
               style={{
-                color: "green",
-                backgroundColor: "white",
+                backgroundColor: ToDo.isCompleted ? "green" : "white",
+                Color: ToDo.isCompleted ? "white" : "green",
                 border: "solid 3px green",
               }}
             >

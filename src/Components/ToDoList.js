@@ -24,9 +24,16 @@ export default function ToDoList() {
   const [ToDos, setToDos] = useState(intialToDos);
   const [InputValue, setInput] = useState("");
   const ToDoList = ToDos.map((t) => {
-    return <ToDo key={t.id} title={t.title} details={t.details} />;
+    return <ToDo key={t.id} ToDo={t} HandleCheck={HandleComplete} />;
   });
 
+  function HandleComplete(id) {
+    const updatedToDos = ToDos.map((todo) => {
+      if (todo.id === id) return { ...todo, isCompleted: !todo.isCompleted };
+      return todo;
+    });
+    setToDos(updatedToDos);
+  }
   function HandleButtonClick() {
     const AddedTodo = {
       id: uuid(),
