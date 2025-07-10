@@ -6,12 +6,26 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
+import CheckIcon from "@mui/icons-material/Check";
 import "../ToDo.css";
+import { ToDosContext } from "../Contexts/ToDosContext";
+import { useContext } from "react";
 
-export default function ToDo({ ToDo, HandleCheck }) {
+export default function ToDo({ todo }) {
+  const { ToDos, setToDos } = useContext(ToDosContext);
+
   function HandleCheckClick() {
-    HandleCheck(ToDo.id);
+    HandleCheck(todo.id);
   }
+
+  function HandleCheck() {
+    const updatedToDos = ToDos.map((t) => {
+      if (t.id === todo.id) return { ...t, isCompleted: !todo.isCompleted };
+      return t;
+    });
+    setToDos(updatedToDos);
+  }
+
   return (
     <Card
       className="toDoCard"
@@ -20,8 +34,8 @@ export default function ToDo({ ToDo, HandleCheck }) {
       <CardContent sx={{ textAlign: "left" }}>
         <Grid container spacing={2}>
           <Grid size={8}>
-            <Typography variant="h5">{ToDo.title}</Typography>
-            <Typography variant="h6">{ToDo.details}</Typography>
+            <Typography variant="h5">{todo.title}</Typography>
+            <Typography variant="h6">{todo.details}</Typography>
           </Grid>
           <Grid
             size={4}
@@ -33,12 +47,12 @@ export default function ToDo({ ToDo, HandleCheck }) {
               onClick={HandleCheckClick}
               className="iconButton"
               style={{
-                backgroundColor: ToDo.isCompleted ? "green" : "white",
-                Color: ToDo.isCompleted ? "white" : "green",
+                backgroundColor: todo.isCompleted ? "green" : "white",
+                Color: todo.isCompleted ? "white" : "green",
                 border: "solid 3px green",
               }}
             >
-              <AddIcon />
+              <CheckIcon />
             </IconButton>
             <IconButton
               className="iconButton"

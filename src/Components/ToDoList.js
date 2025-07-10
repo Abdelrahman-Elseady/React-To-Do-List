@@ -12,28 +12,14 @@ import ToDo from "./ToDo";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { v4 as uuid } from "uuid";
-
+import { ToDosContext } from "../Contexts/ToDosContext";
+import { useContext } from "react";
 import { useState } from "react";
 
-const intialToDos = [
-  { id: uuid(), title: "Learn React", details: "fdasf", isCompleted: false },
-  { id: uuid(), title: "Learn Redux", details: "fdasf", isCompleted: false },
-];
-
 export default function ToDoList() {
-  const [ToDos, setToDos] = useState(intialToDos);
+  const { ToDos, setToDos } = useContext(ToDosContext);
   const [InputValue, setInput] = useState("");
-  const ToDoList = ToDos.map((t) => {
-    return <ToDo key={t.id} ToDo={t} HandleCheck={HandleComplete} />;
-  });
 
-  function HandleComplete(id) {
-    const updatedToDos = ToDos.map((todo) => {
-      if (todo.id === id) return { ...todo, isCompleted: !todo.isCompleted };
-      return todo;
-    });
-    setToDos(updatedToDos);
-  }
   function HandleButtonClick() {
     const AddedTodo = {
       id: uuid(),
@@ -75,7 +61,10 @@ export default function ToDoList() {
           {/* {close buttons} */}
 
           {/* {to dos} */}
-          {ToDoList}
+          {ToDos.map((t) => (
+            <ToDo key={t.id} todo={t} />
+          ))}
+
           {/* close to dos */}
 
           {/* Add To do  */}
